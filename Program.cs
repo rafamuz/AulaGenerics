@@ -24,7 +24,7 @@ namespace AulaGenerics
             string name = list[0];
 
             /* 
-                Problema motivador 1 (reuso)
+                Problema motivador 2 (type safety & performance)
 
                 Deseja-se fazer um programa que leia um conjunto de N números inteiros (N de
                 1 a 10), e depois imprima esses números de forma organizada conforme
@@ -44,9 +44,19 @@ namespace AulaGenerics
             int n = int.Parse(Console.ReadLine());
             for(int i = 0; i < n; i++)
             {
-                int x = int.Parse(Console.ReadLine());
+                object x = Console.ReadLine();
                 printService.AddValue(x);
             }
+
+            /*
+             * Exemplo de uso de programação sem TypeSafety quando 
+             * se usa implementação apenas com object na classe PrintService.
+             * 
+             * Além de perda de performance por causa dos box e unboxes.
+            */
+            int a = (int)printService.First();
+            int b = a + 2;
+
             printService.Print();
             Console.WriteLine();
             Console.WriteLine("First: " + printService.First());
