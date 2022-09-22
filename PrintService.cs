@@ -1,18 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AulaGenerics
 {
-    internal class PrintService
+    internal class PrintService<T> //Tipo genérico. Pode ser dado qualquer nome...
     {
-        private object[] _values = new object[10];
+        private T[] _values = new T[10];
         private int _count = 0;
 
-        public void AddValue(object value)
+        public void AddValue(T value)
         {
             if (_count == 10)
                 throw new InvalidOperationException("PrintService is full");
@@ -21,7 +17,7 @@ namespace AulaGenerics
             _count++;
         }
 
-        public object First()
+        public T First()
         {
             if (_count == 0)
                 throw new InvalidOperationException("PrintService is empty");
